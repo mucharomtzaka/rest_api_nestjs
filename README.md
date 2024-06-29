@@ -39,6 +39,7 @@ $ npm install
 # up container
 
 ```
+if you use docker , first step make folder database for shared resource  with note docker installed
 # up container
 $ docker-compose up -d
 
