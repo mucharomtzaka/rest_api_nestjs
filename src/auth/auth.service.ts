@@ -102,5 +102,25 @@ export class AuthService {
     const user = await this.AuthModule.findOne({ email: decoded['email'] }).lean();
     return user;
   }
+  async refreshtoken(token:string){
+    const decoded = jwt.verify(token, JwtConfig.user_secret);
+    const user = await this.AuthModule.findOne({ email: decoded['email'] }).lean();
+    let refreshToken = this.jwtService.sign(user, {
+      secret: JwtConfig.user_secret,
+      expiresIn: JwtConfig.user_expired
+    });
+    return refreshToken;
+  }
+
+  public async getUserFromAuthenticationToken(token: string) {
+    const payload = this.jwtService.verify(token, {
+      secret: JwtConfig.user_secret,
+    });
+    const useremail = payload.email
+    if (useremail) {
+        return this.AuthModule.findOne({ email:useremail }).lean();
+    }
+  }
+
 }
 

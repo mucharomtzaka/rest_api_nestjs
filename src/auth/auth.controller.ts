@@ -6,16 +6,15 @@ import {
     Post,
     UseGuards,
     UsePipes,
-    ValidationPipe,
-    Headers,
+    ValidationPipe
   } from "@nestjs/common"
   import { AuthService } from "./auth.service"
   import { LoginDto } from "./dto/login.dto"
   import { CreateUserDto } from "../users/dto/create-user.dto"
   import { JwtAuthGuard } from "./jwt-auth/jwt-auth.guard"
   import { TransformPasswordPipe } from "./tranform-password.pipe"
-import { ApiParam } from "@nestjs/swagger"
 import { RequestHeader } from "src/request_header"
+import { ApiBearerAuth } from "@nestjs/swagger"
 
   
   @Controller("auth")
@@ -54,6 +53,7 @@ import { RequestHeader } from "src/request_header"
      */
    
     @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth('jwt-user')
     @Get("profile")
     async profile(@RequestHeader() headers) {
         let token = headers.authorization.substring(7, headers.authorization.length);
@@ -61,6 +61,18 @@ import { RequestHeader } from "src/request_header"
         return {
             message: "Profile",
             data : profile
+        }
+    }
+
+    @UseGuards(JwtAuthGuard)
+    @ApiBearerAuth('jwt-user')
+    @Get("refreshtoken")
+    async refreshtoken(@RequestHeader() headers) {
+        let token = headers.authorization.substring(7, headers.authorization.length);
+         const refreshToken = await this.authService.refreshtoken(token);
+        return {
+            message: "Refreshtoken",
+            data : refreshToken
         }
     }
   }

@@ -21,3 +21,5 @@ export class JwtStrategy extends PassportStrategy(Strategy, "jwt-user") {
     }
   }
 }
+
+export class JwtStrategy2 extends PassportStrategy(Strategy, 'refreshToken') {}

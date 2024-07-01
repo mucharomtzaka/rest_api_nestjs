@@ -9,8 +9,6 @@ import { UsersService } from './users.service';
 import { JwtAuthGuard } from "../auth/jwt-auth/jwt-auth.guard"
 import { TransformPasswordPipe } from "../auth/tranform-password.pipe"
 
-
-// @UseInterceptors(ClassSerializerInterceptor)
 @ApiTags('users')
 @Controller('users')
 export class UsersController {
@@ -18,6 +16,7 @@ export class UsersController {
 
   @Get("/all")
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('jwt-user')
   @ApiOperation({ description: 'Get all users' })
   @ApiOkResponse({
     description: 'The users were successfully obtained.',
@@ -29,6 +28,7 @@ export class UsersController {
 
   @Get(':userId')
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('jwt-user')
   @ApiOperation({
     description: 'Get a user by userId.',
   })
@@ -42,6 +42,7 @@ export class UsersController {
 
   @Post()
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('jwt-user')
   @UsePipes(ValidationPipe, TransformPasswordPipe)
   @ApiOperation({ description: 'Create a user.' })
   @ApiCreatedResponse({
@@ -54,6 +55,7 @@ export class UsersController {
 
   @Patch(':userId')
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('jwt-user')
   @ApiOperation({
     description: 'Update a user by userId.',
   })
@@ -70,6 +72,7 @@ export class UsersController {
 
   @Delete(':userId')
   @UseGuards(JwtAuthGuard)
+  @ApiBearerAuth('jwt-user')
   @ApiOperation({
     description: 'Delete a user by userId.',
   })

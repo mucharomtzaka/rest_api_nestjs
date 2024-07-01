@@ -22,7 +22,7 @@ export default registerAs(
   (): AppConfig => ({
     env: process.env.NODE_ENV || 'development',
     name: process.env.APP_NAME || 'nest-api',
-    globalPrefix: process.env.APP_GLOBAL_PREFIX || 'api/v1',
+    globalPrefix: process.env.APP_GLOBAL_PREFIX || 'api/v1/doc-api',
     timeout: parseInt(process.env.APP_TIMEOUT) || 7000,
     language: process.env.LANGUAGE || 'en',
     http: {

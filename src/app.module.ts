@@ -7,7 +7,10 @@ import { DatabaseService } from './database/database.service';
 import { DatabaseModule } from './database/database.module';
 import { UsersModule } from './users/users.module';
 import { AuthModule } from './auth/auth.module';
+import { ChatsModule } from './chats/chats.module';
+import { MessagesModule } from './messages/messages.module';
 import configs from 'src/config/index';
+import { AppGateway } from './app.gateway';
 
 @Module({
   imports: [
@@ -22,8 +25,10 @@ import configs from 'src/config/index';
     }),
     UsersModule,
     AuthModule,
+    ChatsModule,
+    MessagesModule
   ],
   controllers: [AppController],
-  providers: [AppService],
+  providers: [AppService,AppGateway],
 })
 export class AppModule {}

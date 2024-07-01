@@ -75,6 +75,10 @@ $ npm run test:cov
 
 ``Authorization :  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImplYW5waTNybUBnbWFpbC5jb20iLCJuYW1lIjoiamVhbnBpZXIgdW5kZWZpbmVkIiwiaWF0IjoxNzE5NjUyODMyLCJleHAiOjE3MjAwMTI4MzJ9.8eAetbSY1tL_Pq4I3mqGrXCN-DXJh9TIXw3nVkEANx4`
 
+# Location url Rest Api
+
+`http://localhost:3000/api/v1/doc-api`
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).

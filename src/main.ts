@@ -7,6 +7,7 @@ import { AppModule } from './app.module';
 import { AppConfig } from './config/app.config';
 import { DatabaseConfig } from './config/database.config';
 import { OpenApiConfig } from './config/open-api.config';
+import { join } from 'path';
 config();
 
 async function bootstrap() {
@@ -25,6 +26,11 @@ async function bootstrap() {
       whitelist: true,
     }),
   );
+
+  app.useStaticAssets(join(__dirname, '..', 'public'));
+  app.setBaseViewsDir(join(__dirname, '..', 'views'));
+  app.setViewEngine('ejs');
+
   setupOpenAPI(app);
 
   app.setGlobalPrefix(appConfig.globalPrefix);
@@ -52,6 +58,7 @@ function setupOpenAPI(app: NestApplication) {
     .setTitle(openApiConfig.title)
     .setDescription(openApiConfig.description)
     .setVersion(openApiConfig.version)
+    .addBearerAuth(undefined, 'jwt-user')
     .build();
 
   const document = SwaggerModule.createDocument(app, config, {
@@ -62,6 +69,7 @@ function setupOpenAPI(app: NestApplication) {
       filter: true,
       showRequestDuration: true,
       persistAuthorization: true,
+      operationIdFactory: (controllerKey: string, methodKey: string) => methodKey,
     },
   };
   SwaggerModule.setup(`${appConfig.globalPrefix}`, app, document, options);
