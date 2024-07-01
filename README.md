@@ -26,6 +26,8 @@
 
 [Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
 
+## rest api nestjs , MongoDB and Node.js implemented using docker with JWT Token, DTO, validations, socket.io for chat test case
+
 ## Installation
 
 ```bash
@@ -78,6 +80,12 @@ $ npm run test:cov
 # Location url Rest Api
 
 `http://localhost:3000/api/v1/doc-api`
+
+# Fullstack Developer by
+
+`Mucharom 
+ email: mucharomtzaka@yahoo.co.id or mucharomtzaka@gmail.com
+`
 
 ## Support
 
