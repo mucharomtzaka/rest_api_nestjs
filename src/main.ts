@@ -61,6 +61,7 @@ function setupOpenAPI(app: NestApplication) {
     swaggerOptions: {
       filter: true,
       showRequestDuration: true,
+      persistAuthorization: true,
     },
   };
   SwaggerModule.setup(`${appConfig.globalPrefix}`, app, document, options);
