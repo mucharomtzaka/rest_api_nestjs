@@ -58,9 +58,11 @@ import { ApiBearerAuth } from "@nestjs/swagger"
     async profile(@RequestHeader() headers) {
         let token = headers.authorization.substring(7, headers.authorization.length);
          const profile = await this.authService.findUserProfil(token);
+         const zodiacx = await this.authService.zodiacget(profile.birthday);
         return {
             message: "Profile",
-            data : profile
+            data : profile,
+            zodiac: zodiacx ?? ''
         }
     }
 

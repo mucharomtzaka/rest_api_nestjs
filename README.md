@@ -77,6 +77,10 @@ $ npm run test:cov
 
 ``Authorization :  Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6ImplYW5waTNybUBnbWFpbC5jb20iLCJuYW1lIjoiamVhbnBpZXIgdW5kZWZpbmVkIiwiaWF0IjoxNzE5NjUyODMyLCJleHAiOjE3MjAwMTI4MzJ9.8eAetbSY1tL_Pq4I3mqGrXCN-DXJh9TIXw3nVkEANx4`
 
+# The token after logging in must be refreshed to get a new token for authorization
+
+`http://localhost:3000/api/v1/doc-api/auth/refreshtoken`
+
 # Location url Rest Api
 
 `http://localhost:3000/api/v1/doc-api`
