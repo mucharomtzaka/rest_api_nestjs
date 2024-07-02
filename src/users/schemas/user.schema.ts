@@ -55,7 +55,7 @@ export class User {
     description: "User's birthday",
     required: false,
   })
-  @Prop([String])
+  @Prop(String)
   birthday:string
 
 

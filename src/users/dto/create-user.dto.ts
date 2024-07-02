@@ -37,7 +37,6 @@ export class CreateUserDto {
     example: '14 Mei 1992',
     description: 'The birthday of the user',
   })
-  @IsOptional()
   @IsString()
   birthday: string;
 
