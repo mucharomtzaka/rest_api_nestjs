@@ -33,6 +33,14 @@ export class CreateUserDto {
   @IsString()
   password: string;
 
+  @ApiProperty({
+    example: '14 Mei 1992',
+    description: 'The birthday of the user',
+  })
+  @IsOptional()
+  @IsString()
+  birthday: string;
+
   @IsOptional()
   @IsArray()
   @IsString({ each: true })

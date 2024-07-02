@@ -51,6 +51,15 @@ export class User {
   password: string;
 
   @ApiProperty({
+    example: "14 Mei 1992",
+    description: "User's birthday",
+    required: false,
+  })
+  @Prop([String])
+  birthday:string
+
+
+  @ApiProperty({
     example: ['music', 'sepak bola'],
     description: "User's interest",
     required: false,

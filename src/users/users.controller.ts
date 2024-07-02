@@ -1,5 +1,5 @@
 import { Body, Controller, Delete, Get, Param, Patch, Post, UseGuards,ValidationPipe,UsePipes } from '@nestjs/common';
-import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiTags } from '@nestjs/swagger';
+import { ApiBearerAuth, ApiCreatedResponse, ApiOkResponse, ApiOperation, ApiParam, ApiTags } from '@nestjs/swagger';
 import { CreateUserDto } from './dto/create-user.dto';
 import { DeleteUserResponse } from './dto/delete-response.dto';
 import { FindOneParams } from './dto/find-one-params.dto';
@@ -27,6 +27,7 @@ export class UsersController {
   }
 
   @Get(':userId')
+  @ApiParam({name: 'userId', required: true, description: 'either an integer for the user id or a string for the username name , example: 535fedd2-ac81-4dcc-80ca-a5287d549e90', schema: { oneOf: [{type: 'string'}, {type: 'integer'}]}})
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('jwt-user')
   @ApiOperation({
@@ -54,6 +55,7 @@ export class UsersController {
   }
 
   @Patch(':userId')
+  @ApiParam({name: 'userId', required: true, description: 'either an integer for the user id or a string for the username name , example: 535fedd2-ac81-4dcc-80ca-a5287d549e90', schema: { oneOf: [{type: 'string'}, {type: 'integer'}]}})
   @UseGuards(JwtAuthGuard)
   @ApiBearerAuth('jwt-user')
   @ApiOperation({
