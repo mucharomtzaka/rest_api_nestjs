@@ -149,8 +149,12 @@ export class AuthService {
     const birthDate = new Date(formatf);
     const month = birthDate.getUTCMonth() + 1;
     const day = birthDate.getUTCDate();
+    const years = birthDate.getUTCFullYear();
     const zodiacSign = this.getZodiacSign(month, day);
-    return zodiacSign;
+    return {
+      zodiac_chiness : this.getZodiacAnimalByYear(years),
+      horoscope_star: zodiacSign
+    };
   }
 
   private getZodiacSign(month: number, day: number): string {
@@ -180,6 +184,16 @@ export class AuthService {
       return 'Capricorn';
     }
     return 'Unknown';
+  }
+
+  private getZodiacAnimalByYear(year: number): string {
+    const zodiacAnimals = [
+      'Rat', 'Ox', 'Tiger', 'Rabbit', 'Dragon', 'Snake',
+      'Horse', 'Goat', 'Monkey', 'Rooster', 'Dog', 'Pig'
+    ];
+
+    const index = (year - 4) % 12;
+    return zodiacAnimals[index];
   }
 
 }
